@@ -2,7 +2,7 @@
 
 **Zadanie 1** Kalkulator
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/e6309722eb26f8ed6fd004bbce8c3d817f6ad932)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
