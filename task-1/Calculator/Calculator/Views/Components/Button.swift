@@ -18,9 +18,9 @@ extension CalculatorView {
                 viewModel.action(for: buttonType)
             }
                 .buttonStyle(CalculatorButtonStyle(
-                    size: 80,
+                    size: 84,
                     backgroundColor: buttonType.backgroundColor,
-                    isBig: buttonType == .zero
+                    isBig: buttonType == .digit(.zero) || buttonType ==  .allClear
                 )
             )
         }
@@ -36,6 +36,6 @@ extension CalculatorView {
 
 struct CalculatorView_CalculatorButton_Previews: PreviewProvider {
     static var previews: some View {
-        CalculatorView.CalculatorButton(buttonType: .one)
+        CalculatorView.CalculatorButton(buttonType: .digit(.one))
     }
 }

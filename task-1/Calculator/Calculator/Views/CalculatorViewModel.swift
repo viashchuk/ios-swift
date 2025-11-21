@@ -18,37 +18,19 @@ extension CalculatorView {
         }
         
         var buttonTypes: [[ButtonType]] {
-            [[.allClear],
-             [.seven, .eight, .nine],
-             [.four, .five, .six],
-             [.one, .two, .three, .add],
-             [.zero, .equal]]
+            [[.allClear, .operation(.divide)],
+             [.digit(.seven), .digit(.eight), .digit(.nine), .operation(.multiply)],
+             [.digit(.four), .digit(.five), .digit(.six), .operation(.subtract)],
+             [.digit(.one), .digit(.two), .digit(.three), .operation(.add)],
+             [.digit(.zero), .equal]]
         }
         
         func action(for buttonType: ButtonType) {
             switch buttonType {
-            case .zero:
-                calculator.setDigit(.zero)
-            case .one:
-                calculator.setDigit(.one)
-            case .two:
-                calculator.setDigit(.two)
-            case .three:
-                calculator.setDigit(.three)
-            case .four:
-                calculator.setDigit(.four)
-            case .five:
-                calculator.setDigit(.five)
-            case .six:
-                calculator.setDigit(.six)
-            case .seven:
-                calculator.setDigit(.seven)
-            case .eight:
-                calculator.setDigit(.eight)
-            case .nine:
-                calculator.setDigit(.nine)
-            case .add:
-                calculator.setOperation(.add)
+            case .digit(let digit):
+                calculator.setDigit(digit)
+            case .operation(let operation):
+                calculator.setOperation(operation)
             case .equal:
                 calculator.evaluate()
             case .allClear:

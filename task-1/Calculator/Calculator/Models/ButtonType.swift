@@ -6,45 +6,18 @@
 //
 import SwiftUI
 
-enum ButtonType {
-    case zero
-    case one
-    case two
-    case three
-    case four
-    case five
-    case six
-    case seven
-    case eight
-    case nine
-    case add
+enum ButtonType: Hashable, CustomStringConvertible {
+    case digit(_ digit: Digit)
+    case operation(_ operation: Operation)
     case equal
     case allClear
     
     var description: String {
         switch self {
-        case .zero:
-            return "0"
-        case .one:
-            return "1"
-        case .two:
-            return "2"
-        case .three:
-            return "3"
-        case .four:
-            return "4"
-        case .five:
-            return "5"
-        case .six:
-            return "6"
-        case .seven:
-            return "7"
-        case .eight:
-            return "8"
-        case .nine:
-            return "9"
-        case .add:
-            return "+"
+        case .digit(let digit):
+            return digit.description
+        case .operation(let operation):
+            return operation.description
         case .equal:
             return "="
         case .allClear:
@@ -54,7 +27,7 @@ enum ButtonType {
     
     var backgroundColor: Color {
         switch self {
-        case .add, .equal:
+        case .operation, .equal:
             return Color.orange
         case .allClear:
             return Color(.lightGray)

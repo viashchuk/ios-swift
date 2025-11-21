@@ -5,6 +5,19 @@
 //  Created by Victoria Iashchuk on 20/11/2025.
 //
 
-enum Operation: String {
-    case add = "+"
+enum Operation: CaseIterable, CustomStringConvertible {
+    case add
+    case subtract
+    case multiply
+    case divide
+    
+    var description: String {
+        switch self {
+        case .add:      return "+"
+        case .subtract: return "-"
+        case .multiply: return "×"
+        case .divide:   return "÷"
+        }
+    }
 }
+

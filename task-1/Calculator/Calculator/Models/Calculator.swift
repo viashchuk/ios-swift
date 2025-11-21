@@ -27,7 +27,7 @@ struct Calculator {
     }
     
     mutating func setDigit(_ digit: Digit) {
-        let value = digit.rawValue
+        let value = digit.description
         if isTyping {
             if displayText == "0" {
                 displayText = value
@@ -55,6 +55,12 @@ struct Calculator {
         switch op {
         case .add:
             return firstNumber + secondNumber
+        case .subtract:
+            return firstNumber - secondNumber
+        case .multiply:
+            return firstNumber * secondNumber
+        case .divide:
+            return firstNumber / secondNumber
         }
     }
     
