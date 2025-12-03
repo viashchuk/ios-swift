@@ -18,7 +18,8 @@ extension CalculatorView {
         }
         
         var buttonTypes: [[ButtonType]] {
-            [[.allClear, .operation(.divide)],
+            [[.operation(.power), .smartOperation(.log), .sign, .smartOperation(.percent)],
+             [.allClear, .operation(.divide)],
              [.digit(.seven), .digit(.eight), .digit(.nine), .operation(.multiply)],
              [.digit(.four), .digit(.five), .digit(.six), .operation(.subtract)],
              [.digit(.one), .digit(.two), .digit(.three), .operation(.add)],
@@ -29,8 +30,16 @@ extension CalculatorView {
             switch buttonType {
             case .digit(let digit):
                 calculator.setDigit(digit)
+                
             case .operation(let operation):
                 calculator.setOperation(operation)
+            case .smartOperation(.log):
+                calculator.setLogarithm()
+            case .sign:
+                calculator.toggleSign()
+            case .smartOperation(.percent):
+                calculator.setPercent()
+                
             case .equal:
                 calculator.evaluate()
             case .allClear:

@@ -9,6 +9,8 @@ import SwiftUI
 enum ButtonType: Hashable, CustomStringConvertible {
     case digit(_ digit: Digit)
     case operation(_ operation: Operation)
+    case smartOperation(_ smartOperation: SmartOperation)
+    case sign
     case equal
     case allClear
     
@@ -18,21 +20,28 @@ enum ButtonType: Hashable, CustomStringConvertible {
             return digit.description
         case .operation(let operation):
             return operation.description
+        case .smartOperation(let smartOperation):
+            return smartOperation.description
+        case .sign:
+            return "(-)"
         case .equal:
             return "="
         case .allClear:
             return "AC"
+            
         }
     }
     
     var backgroundColor: Color {
         switch self {
+        case .operation(.power), .smartOperation, .sign:
+            return Constants.bgDarkGray
         case .operation, .equal:
-            return Color.orange
+            return Constants.bgOrange
         case .allClear:
-            return Color(.lightGray)
+            return Constants.bgLighterGray
         default:
-            return .secondary
+            return Constants.bgLightGray
         }
     }
     

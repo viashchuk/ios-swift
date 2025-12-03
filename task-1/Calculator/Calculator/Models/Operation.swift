@@ -10,6 +10,7 @@ enum Operation: CaseIterable, CustomStringConvertible {
     case subtract
     case multiply
     case divide
+    case power
     
     var description: String {
         switch self {
@@ -17,6 +18,7 @@ enum Operation: CaseIterable, CustomStringConvertible {
         case .subtract: return "-"
         case .multiply: return "×"
         case .divide:   return "÷"
+        case .power:    return "^"
         }
     }
 }
