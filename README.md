@@ -17,7 +17,7 @@ Kod: [Kalkulator](./task-1)
 
 **Zadanie 2** Lista zadań
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/beeb1206a16509c7ad5e7697223777eabf7e4e00)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
