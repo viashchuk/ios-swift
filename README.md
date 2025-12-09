@@ -10,7 +10,7 @@
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/ab18c1e0d24c12dcd60691f2a8468e1b66d5a05f)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ios-swift/commit/0373f3b1e47cfffdd5c58724ff731b444ae81c05)
 
 
 Kod: [Kalkulator](./task-1)
