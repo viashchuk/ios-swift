@@ -19,7 +19,7 @@ Kod: [Kalkulator](./task-1)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/beeb1206a16509c7ad5e7697223777eabf7e4e00)
 
-:x: 3.5 wymaganie 2 [Link do commita 2]()
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ios-swift/commit/beeb1206a16509c7ad5e7697223777eabf7e4e00)
 
 :x: 4.0 wymaganie 3 [Link do commita 3]()
 
