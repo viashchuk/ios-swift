@@ -20,7 +20,7 @@ extension CalculatorView {
                 buttonLabel
             })
                 .buttonStyle(CalculatorButtonStyle(
-                    size: 84,
+                    size: getButtonSize(),
                     backgroundColor: buttonType.backgroundColor,
                     isBig: buttonType == .digit(.zero) || buttonType ==  .allClear,
                     buttonType: buttonType
@@ -40,17 +40,17 @@ extension CalculatorView {
             if buttonType == .operation(.power) {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text("x")
-                        .font(.system(size: 30, weight: .regular))
+                        .font(.system(size: Constants.buttonFontSize, weight: .regular))
                     Text("y")
-                        .font(.system(size: 18, weight: .regular))
+                        .font(.system(size: Constants.buttonFontSize * 0.75, weight: .regular))
                         .baselineOffset(10)
                 }
             } else if buttonType == .smartOperation(.log) {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text("log")
-                        .font(.system(size: 30, weight: .regular))
+                        .font(.system(size: Constants.buttonFontSize, weight: .regular))
                     Text("10")
-                        .font(.system(size: 18, weight: .regular))
+                        .font(.system(size: Constants.buttonFontSize * 0.75, weight: .regular))
                         .baselineOffset(-10)
                 }
             }

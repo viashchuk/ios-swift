@@ -14,4 +14,6 @@ struct Constants {
     static let bgDarkGray: Color = Color(red: 0.188, green: 0.188, blue: 0.188)
     static let bgLightGray: Color = Color(red: 0.278, green: 0.278, blue: 0.278)
     static let bgLighterGray: Color =  Color(red: 0.443, green: 0.443, blue: 0.443)
+    static let buttonMaxHeight: CGFloat = UIScreen.main.bounds.width > 460 ? 90 : 84
+    static let buttonFontSize: CGFloat = UIScreen.main.bounds.width > 460 ? 40 : 32
 }

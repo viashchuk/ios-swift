@@ -16,9 +16,10 @@ struct CalculatorButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
             configuration.label
-            .font(.system(size: 32, weight: .medium))
+            .font(.system(size: Constants.buttonFontSize, weight: .medium))
             .frame(width: size, height: size)
             .frame(maxWidth: isBig ? .infinity : size, alignment: .leading)
+            .frame(maxHeight: Constants.buttonMaxHeight)
             .background(backgroundColor)
             .foregroundColor(Color.white)
             .overlay {
@@ -32,9 +33,12 @@ struct CalculatorButtonStyle: ButtonStyle {
     
     @ViewBuilder
     private var buttonOverlay: some View {
-        let shape = buttonType == .digit(.zero) || buttonType == .allClear || buttonType == .operation(.power)
-            ? AnyShape(Capsule())
-            : AnyShape(Circle())
+        let shape = AnyShape(Capsule())
+        if UIScreen.main.bounds.width <= 460 {
+            let shape = buttonType == .digit(.zero) || buttonType == .allClear || buttonType == .operation(.power)
+                ? AnyShape(Capsule())
+                : AnyShape(Circle())
+        }
         
         shape
             .stroke(
