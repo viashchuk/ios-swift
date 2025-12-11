@@ -33,7 +33,7 @@ Kod: [Lista zadań](./task-2)
 
 **Zadanie 3** Lista zakupów
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/bafa27c92521634efa50799381e2f54eff0de6ce)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
