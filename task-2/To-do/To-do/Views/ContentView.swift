@@ -8,29 +8,58 @@
 import SwiftUI
 
 struct ContentView: View {
-    let tasks: [Task] = [
-        Task(title: "Task 1", isCompleted: false),
-        Task(title: "Task 2", isCompleted: false),
-        Task(title: "Task 3", isCompleted: false),
-        Task(title: "Task 4", isCompleted: true),
-        Task(title: "Task 5", isCompleted: false),
+    @State private var tasks: [TodoItem] = [
+        TodoItem(title: "Task 1", isCompleted: false),
+        TodoItem(title: "Task 2", isCompleted: false),
+        TodoItem(title: "Task 3", isCompleted: false),
+        TodoItem(title: "Task 4", isCompleted: true),
+        TodoItem(title: "Task 5", isCompleted: false),
     ]
+    
     var body: some View {
         NavigationStack {
-                    ZStack {
-                        Color.gray.opacity(0.1).ignoresSafeArea()
-                        
-                        ScrollView {
-                            VStack(spacing: 15) {
-                                ForEach(tasks) { task in
-                                    Card(task: task)
-                                }
+            ZStack {
+                Color.gray.opacity(0.1).ignoresSafeArea()
+                if tasks.isEmpty {
+                    ContentUnavailableView("You have no tasks", systemImage: "checklist")
+                } else {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("You have \(Text("\(tasks.count) tasks").foregroundColor(.yellow).bold()) today")
+                                .bold()
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                
+                                Spacer()
                             }
-                            .padding()
+                            .padding(.horizontal)
+                            .padding(.top, 40)
+                        
+                        List {
+                            ForEach($tasks) { $task in
+                                    Card(
+                                        item: $task,
+                                        onDelete: {
+                                                if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                                                        tasks.remove(at: index)
+                                                    }
+                                        }
+                                    )
+                                .listRowInsets(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
+                                .listRowBackground(Color.clear)
+                            }
+                            .onDelete { indexSet in
+                                tasks.remove(atOffsets: indexSet)
+                            }
                         }
+                        .padding(.top, 20)
+                        .listStyle(.plain)
+                        .scrollContentBackground(.hidden)
                     }
-                    .navigationTitle("All Tasks")
                 }
+            }
+            .background(Constants.bgColor)
+        }
     }
 }
 

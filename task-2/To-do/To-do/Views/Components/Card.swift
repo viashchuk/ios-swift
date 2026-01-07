@@ -8,26 +8,35 @@
 import SwiftUI
 
 struct Card: View {
-    let task: Task
+    @Binding var item: TodoItem
+    
+    let onDelete: () -> Void
     
     var body: some View {
         HStack {
-        Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-            .foregroundColor(task.isCompleted ? .green : .gray)
-                    
-        Text(task.title)
-            .font(.body)
-            .strikethrough(task.isCompleted)
-                    
-        Spacer()
-    }
-    .padding()
-    .background(Color.white)
-    .cornerRadius(10)
-    .shadow(radius: 2)
+            Image(systemName: item.isCompleted ? "checkmark.circle.fill" : "circle")
+                .foregroundColor(item.isCompleted ? .green : .gray)
+            
+            Text(item.title)
+                .font(.body)
+                .strikethrough(item.isCompleted)
+            
+            Spacer()
+        }
+        .padding()
+        .background(Constants.cardBg)
+        .cornerRadius(60)
+        .shadow(radius: 2)
+        .foregroundColor(.white)
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button(role: .destructive, action: onDelete) {
+                  Image(systemName: "trash")
+                      .frame(width: 24, height: 24)
+              }
+        }
     }
 }
 
 #Preview {
-    Card(task: Task(title: "Test task", isCompleted: false))
+    Card(item: .constant(TodoItem(title: "Test task", isCompleted: false)), onDelete: {})
 }

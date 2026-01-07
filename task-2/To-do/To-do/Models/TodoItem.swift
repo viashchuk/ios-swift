@@ -1,13 +1,13 @@
 //
-//  Task.swift
+//  TodoItem.swift
 //  To-do
 //
 //  Created by Victoria Iashchuk on 03/12/2025.
 //
 import Foundation
 
-struct Task: Identifiable {
+struct TodoItem: Identifiable {
     let id = UUID()
-    let title: String
+    var title: String
     var isCompleted: Bool = false
 }
