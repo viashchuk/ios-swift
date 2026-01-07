@@ -21,11 +21,11 @@ Kod: [Kalkulator](./task-1)
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ios-swift/commit/beeb1206a16509c7ad5e7697223777eabf7e4e00)
 
-:x: 4.0 wymaganie 3 [Link do commita 3]()
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ios-swift/commit/b8d718f45cdb93865f48531e58a8036ed52684d3)
 
-:x: 4.5 wymaganie 4 [Link do commita 4]()
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/decc0d16361ad2b3dbdbb9d2b9d3a8caccb5b725)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ios-swift/commit/decc0d16361ad2b3dbdbb9d2b9d3a8caccb5b725)
 
 
 Kod: [Lista zadań](./task-2)
