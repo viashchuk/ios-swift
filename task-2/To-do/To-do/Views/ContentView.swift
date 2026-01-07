@@ -15,6 +15,7 @@ struct ContentView: View {
         TodoItem(title: "Task 4", isCompleted: true),
         TodoItem(title: "Task 5", isCompleted: false),
     ]
+    @State private var taskToEdit: TodoItem?
     
     var body: some View {
         NavigationStack {
@@ -39,10 +40,16 @@ struct ContentView: View {
                             ForEach($tasks) { $task in
                                     Card(
                                         item: $task,
+                                        onToggleStatus: {
+                                            task.isCompleted.toggle()
+                                        },
                                         onDelete: {
                                                 if let index = tasks.firstIndex(where: { $0.id == task.id }) {
                                                         tasks.remove(at: index)
                                                     }
+                                        },
+                                        onEdit: {
+                                            taskToEdit = task
                                         }
                                     )
                                 .listRowInsets(EdgeInsets(top: 5, leading: 15, bottom: 5, trailing: 15))
@@ -59,6 +66,11 @@ struct ContentView: View {
                 }
             }
             .background(Constants.bgColor)
+        }
+        .sheet(item: $taskToEdit) { task in
+            if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+                EditTaskView(task: $tasks[index])
+            }
         }
     }
 }
