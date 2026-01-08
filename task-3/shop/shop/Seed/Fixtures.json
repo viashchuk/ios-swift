@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Frappuccino",
+    "products": [
+      {
+        "name": "Caramel Brulée Frappuccino",
+        "details": "Coffee-based blended drink with caramel brulée flavor. Ingredients: coffee, milk, ice, caramel brulée syrup, whipped cream, caramel sugar topping.",
+        "price": 6.45,
+        "imageName": "caramel_brulee_frappuccino"
+      },
+      {
+        "name": "Peppermint Mocha Frappuccino",
+        "details": "Refreshing mint and chocolate coffee drink. Ingredients: coffee, milk, ice, mocha sauce, peppermint syrup, whipped cream, chocolate curls.",
+        "price": 6.75,
+        "imageName": "peppermint_mocha_frappuccino"
+      },
+      {
+        "name": "Peppermint White Chocolate Mocha Frappuccino",
+        "details": "Smooth white chocolate and peppermint coffee drink. Ingredients: coffee, milk, ice, white chocolate mocha sauce, peppermint syrup, whipped cream.",
+        "price": 6.85,
+        "imageName": "peppermint_white_chocolate_mocha_frappuccino"
+      },
+      {
+        "name": "Caramel Frappuccino",
+        "details": "Classic caramel-flavored blended coffee drink. Ingredients: coffee, milk, ice, caramel syrup, whipped cream, caramel drizzle.",
+        "price": 5.95,
+        "imageName": "caramel_frappuccino"
+      },
+      {
+        "name": "Mocha Cookie Crumble Frappuccino",
+        "details": "Rich mocha drink with chocolate cookie pieces. Ingredients: coffee, milk, ice, mocha sauce, chocolate cookie crumble, whipped cream.",
+        "price": 7.15,
+        "imageName": "mocha_cookie_crumble_frappuccino"
+      },
+      {
+        "name": "Mocha Frappuccino",
+        "details": "Classic chocolate-flavored coffee Frappuccino. Ingredients: coffee, milk, ice, mocha sauce, whipped cream.",
+        "price": 5.75,
+        "imageName": "mocha_frappuccino"
+      }
+    ]
+  },
+  {
+    "name": "Refreshers",
+    "products": [
+      {
+        "name": "Strawberry Açaí Lemonade Refresher",
+        "details": "Fruity strawberry and açaí drink with lemonade. Ingredients: strawberry açaí base, lemonade, ice, real strawberry pieces.",
+        "price": 5.25,
+        "imageName": "strawberry_acai_lemonade_refresher"
+      },
+      {
+        "name": "Mango Dragonfruit Lemonade Refresher",
+        "details": "Tropical mango and dragonfruit lemonade drink. Ingredients: mango dragonfruit base, lemonade, ice, dragonfruit pieces.",
+        "price": 5.45,
+        "imageName": "mango_dragonfruit_lemonade_refresher"
+      }
+    ]
+  },
+  {
+    "name": "Coconutmilk Refreshers",
+    "products": [
+      {
+        "name": "Pink Drink",
+        "details": "Strawberry açaí refresher with coconutmilk. Ingredients: strawberry açaí base, coconutmilk, ice, freeze-dried strawberries.",
+        "price": 5.65,
+        "imageName": "pink_drink"
+      },
+      {
+        "name": "Dragon Drink",
+        "details": "Mango dragonfruit refresher with coconutmilk. Ingredients: mango dragonfruit base, coconutmilk, ice, dragonfruit pieces.",
+        "price": 5.85,
+        "imageName": "dragon_drink"
+      }
+    ]
+  }
+]
