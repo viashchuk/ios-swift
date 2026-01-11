@@ -35,11 +35,11 @@ Kod: [Lista zadań](./task-2)
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/bafa27c92521634efa50799381e2f54eff0de6ce)
 
-:x: 3.5 wymaganie 2 [Link do commita 2]()
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ios-swift/commit/ae581fffb02375b6cac7c01939da142aea3bcea0)
 
-:x: 4.0 wymaganie 3 [Link do commita 3]()
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ios-swift/commit/44bfe15cb95e7d048b14b80467229d5e3deed77b)
 
-:x: 4.5 wymaganie 4 [Link do commita 4]()
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/d67dcce070ddf7e93a55a395fce36918dc729a3a)
 
 :x: 5.0 wymaganie 5 [Link do commita 5]()
 
