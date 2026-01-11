@@ -41,7 +41,7 @@ Kod: [Lista zadań](./task-2)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/d67dcce070ddf7e93a55a395fce36918dc729a3a)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:x: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ios-swift/commit/8d41b1786d75aa3176f0dd5465b820e700638085)
 
 
 Kod: [Lista zakupów](./task-3)

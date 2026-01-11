@@ -10,4 +10,4 @@
 - 3.5 Load data on app launch (Fixtures): [Commit](https://github.com/viashchuk/ios-swift/commit/ae581fffb02375b6cac7c01939da142aea3bcea0)
 - 4.0 Create a product list with product description subpage on a new view (data from core data): [Commit](https://github.com/viashchuk/ios-swift/commit/44bfe15cb95e7d048b14b80467229d5e3deed77b)
 - 4.5 Option to add product to cart (tabview): [Commit](https://github.com/viashchuk/ios-swift/commit/d67dcce070ddf7e93a55a395fce36918dc729a3a)
-- 5.0 Adding more than one product of the same type to cart: [Commit]()
+- 5.0 Adding more than one product of the same type to cart: [Commit](https://github.com/viashchuk/ios-swift/commit/8d41b1786d75aa3176f0dd5465b820e700638085)
