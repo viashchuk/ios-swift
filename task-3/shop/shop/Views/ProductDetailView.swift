@@ -5,10 +5,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ProductDetailView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     let product: Product
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -43,6 +46,16 @@ struct ProductDetailView: View {
                     Text(product.details ?? "We don't have description yet")
                         .font(.body)
                         .foregroundColor(.secondary)
+                    
+                    Button(action: addToCart) {
+                                        Label("Add to cart", systemImage: "cart.badge.plus")
+                                            .font(.headline)
+                                            .frame(maxWidth: .infinity)
+                                            .padding()
+                                            .background(Color.blue)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(10)
+                                    }
                 }
                 .padding()
             }
@@ -50,4 +63,13 @@ struct ProductDetailView: View {
         .navigationTitle("About drink")
         .navigationBarTitleDisplayMode(.inline)
     }
+    
+    private func addToCart() {
+            let newItem = CartItem(context: viewContext)
+            newItem.id = UUID()
+            newItem.quantity = 1
+            newItem.product = product
+            
+            try? viewContext.save()
+        }
 }
