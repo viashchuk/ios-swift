@@ -10,7 +10,19 @@ import CoreData
 struct ProductDetailView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    @FetchRequest private var cartItems: FetchedResults<CartItem>
+    
+    
     let product: Product
+    
+    init(product: Product) {
+            self.product = product
+            _cartItems = FetchRequest<CartItem>(
+                entity: CartItem.entity(),
+                sortDescriptors: [],
+                predicate: NSPredicate(format: "product == %@", product)
+            )
+        }
     
     var body: some View {
         ScrollView {
@@ -47,15 +59,39 @@ struct ProductDetailView: View {
                         .font(.body)
                         .foregroundColor(.secondary)
                     
-                    Button(action: addToCart) {
-                                        Label("Add to cart", systemImage: "cart.badge.plus")
-                                            .font(.headline)
-                                            .frame(maxWidth: .infinity)
-                                            .padding()
-                                            .background(Color.blue)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(10)
-                                    }
+                    if let cartItem = cartItems.first {
+                        HStack(spacing: 20) {
+                            Button(action: { changeQuantity(item: cartItem, delta: -1) }) {
+                                Image(systemName: "minus.circle.fill")
+                                    .font(.system(size: 44))
+                                    .foregroundColor(.red)
+                            }
+
+                            Text("\(cartItem.quantity)")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .frame(minWidth: 40)
+
+                            Button(action: { changeQuantity(item: cartItem, delta: 1) }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.system(size: 44))
+                                    .foregroundColor(.green)
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                        } else {
+                            Button(action: addToCart) {
+                                Label("Add to Cart", systemImage: "cart.badge.plus")
+                                    .font(.headline)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
+                            .padding()
+                    }
                 }
                 .padding()
             }
@@ -65,11 +101,24 @@ struct ProductDetailView: View {
     }
     
     private func addToCart() {
-            let newItem = CartItem(context: viewContext)
-            newItem.id = UUID()
-            newItem.quantity = 1
-            newItem.product = product
-            
-            try? viewContext.save()
+        let newItem = CartItem(context: viewContext)
+        newItem.id = UUID()
+        newItem.quantity = 1
+        newItem.product = product
+        saveContext()
+    }
+    
+    private func changeQuantity(item: CartItem, delta: Int16) {
+        let newQuantity = item.quantity + delta
+        if newQuantity > 0 {
+            item.quantity = newQuantity
+        } else {
+            viewContext.delete(item)
         }
+        saveContext()
+    }
+
+    private func saveContext() {
+        try? viewContext.save()
+    }
 }
