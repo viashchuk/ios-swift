@@ -12,5 +12,6 @@ https://github.com/user-attachments/assets/09d10653-e41b-49cf-bce9-7a4a15814ef4
 
 ## Shop
 
-https://github.com/user-attachments/assets/36f3d3d4-e278-4a42-b702-9e49f1bb058e
+
+https://github.com/user-attachments/assets/50e36e2c-0353-4c30-958c-a0bfc764f6c6
 
