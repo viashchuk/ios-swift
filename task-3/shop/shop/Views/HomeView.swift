@@ -11,59 +11,72 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Category.name, ascending: true)],
+        animation: .default)
+    private var categories: FetchedResults<Category>
+    
+    @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Product.name, ascending: true)],
         animation: .default)
     private var products: FetchedResults<Product>
     
+    @State private var selectedCategory: Category? = nil
+    
+    private let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(products) { product in
-                    NavigationLink(destination: ProductDetailView(product: product)) {
-                        HStack {
-                            if let imageName = product.imageName, !imageName.isEmpty {
-                                Image(imageName)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 70, height: 70)
-                                    .clipped()
-                                    .cornerRadius(12)
-                            } else {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.secondary.opacity(0.2))
-                                    .frame(width: 70, height: 70)
-                                    .overlay(Image(systemName: "cart.fill").foregroundColor(.gray))
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                HStack {
+                    Spacer()
+                    Text("Coffee Shop")
+                        .font(.system(size: 34))
+                        .fontWeight(.bold)
+                        .foregroundColor(Constants.secondary)
+                        .multilineTextAlignment(.center)
+                    Spacer()
+                }
+                .padding(.vertical, 20)
+                
+                CategoryList(
+                    categories: categories,
+                    selectedCategory: $selectedCategory
+                )
+                
+                VStack(alignment: .leading) {
+                    
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(filteredProducts) { product in
+                            NavigationLink(value: product) {
+                                ProductGridItem(product: product)
                             }
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(product.name ?? "Coffee")
-                                    .font(.headline)
-                                    .foregroundColor(.primary)
-                                if let categoryName = product.category?.name {
-                                    Text(categoryName)
-                                        .font(.caption)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 2)
-                                        .background(Color.blue.opacity(0.1))
-                                        .foregroundColor(.blue)
-                                        .clipShape(Capsule())
-                                }
-                                
-                                Text("\(product.price, specifier: "%.2f") $")
-                                    .font(.subheadline)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.green)
-                            }
+                            .buttonStyle(.plain)
                         }
                     }
+                    .padding(.horizontal)
                 }
             }
-            .navigationTitle("Shop")
-            
+            .padding(.bottom, 60)
         }
+        .background(Color.gray.opacity(0.05))
+        .navigationDestination(for: Product.self) { product in
+            ProductDetailView(product: product)
+        }
+    }
+    
+    private var filteredProducts: [Product] {
+        guard let selected = selectedCategory else { return Array(products) }
+        return products.filter { $0.category == selected }
     }
 }
 
 #Preview {
-    HomeView()
-        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+    NavigationStack {
+        HomeView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+    }
 }
+
