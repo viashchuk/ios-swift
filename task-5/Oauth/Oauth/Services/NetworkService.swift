@@ -11,6 +11,7 @@ enum RequestError: Error {
     case invalidResponse
     case wrongCredentials
     case serverError
+    case wrongStatus
     
     var description: String {
         switch self {
@@ -20,6 +21,8 @@ enum RequestError: Error {
             return "Wrong Email or Password"
         case .serverError:
             return "Server error"
+        case .wrongStatus:
+            return "wrongStatus"
         }
     }
 }
@@ -48,10 +51,10 @@ class NetworkService {
             throw RequestError.invalidResponse
         }
         
-        guard httpResponse.statusCode == 200 else {
+        guard httpResponse.statusCode == 200 || httpResponse.statusCode == 201 else {
             throw httpResponse.statusCode == 401 ?
             RequestError.wrongCredentials :
-            RequestError.serverError
+            RequestError.wrongStatus
         }
         
         return try JSONDecoder().decode(T.self, from: data)
