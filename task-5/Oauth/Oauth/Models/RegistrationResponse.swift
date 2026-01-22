@@ -9,11 +9,5 @@ import Foundation
 
 struct RegistrationResponse: Codable {
     let token: String
-    let user: UserData
-    
-    struct UserData: Codable {
-        let id: Int
-        let email: String
-        let name: String
-    }
+    let user: User
 }

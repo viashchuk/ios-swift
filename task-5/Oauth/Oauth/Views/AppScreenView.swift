@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct AppScreenView: View {
+    let name: String
+    let email: String
+    
     var body: some View {
         VStack {
-            Text("Welcome to the App!")
+            Text("Welcome, \(name) to the App!")
                 .font(.title)
+            Text(email)
+                .font(.subheadline)
+                .foregroundColor(.gray)
         }
     }
 }

@@ -57,12 +57,13 @@ struct RegistrationView: View {
                     
                     Spacer()
                 }
-                .fullScreenCover(isPresented: $viewModel.isLoggedIn) {
-                    AppScreenView()
+                
+                .fullScreenCover(item: $viewModel.currentUser) { user in
+                    AppScreenView(name: user.name, email: user.email)
                 }
             }
+            .background(.white)
         }
-        .background(.white)
     }
 }
 

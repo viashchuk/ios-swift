@@ -15,8 +15,16 @@ const updateGoogleToken = async (id, token) => {
   )
 }
 
+const updateGithubToken = async (id, token) => {
+  return await User.update(
+    { githubToken: token },
+    { where: { id } }
+  )
+}
+
 export default {
     findByEmail,
     create,
-    updateGoogleToken
+    updateGoogleToken,
+    updateGithubToken
 }

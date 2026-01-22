@@ -63,39 +63,64 @@ struct LoginView: View {
                             .fill(Color.gray.opacity(0.4))
                             .frame(height: 1)
                     }
-                    .padding(.vertical, 20)
                     
-                    Button(action: {
-                        Task {
+                    HStack(spacing: 24) {
+                        
+                        Button {
+                            Task {
                                 await viewModel.loginWithGoogle()
                             }
-                    }) {
-                        HStack(spacing: 12) {
-                            Image("google_icon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 24, height: 24)
-                            
-                            Text("Google")
-                                .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(.black)
+                        } label: {
+                            HStack(spacing: 12) {
+                                Image("google_icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                                
+                                Text("Google")
+                                    .font(.system(size: 18, weight: .medium))
+                                    .foregroundColor(.black)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 54)
+                            .background(Color.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 60)
+                                    .stroke(Color.gray.opacity(0.4), lineWidth: 1)
+                            )
                         }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 54)
-                        .background(Color.white)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 60)
-                                .stroke(Color.gray.opacity(0.4), lineWidth: 1)
-                        )
+                        
+                        Button {
+                            Task {
+                                await viewModel.loginWithGitHub()
+                            }
+                        } label: {
+                            HStack(spacing: 12) {
+                                Image("github_icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 24, height: 24)
+                                
+                                Text("Github")
+                                    .font(.system(size: 18, weight: .medium))
+                                    .foregroundColor(.black)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 54)
+                            .background(Color.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 60)
+                                    .stroke(Color.gray.opacity(0.4), lineWidth: 1)
+                            )
+                        }
                     }
-                    .cornerRadius(100)
                     
                     Spacer()
                 }
                 .padding(0)
                 .navigationBarHidden(true)
-                .fullScreenCover(isPresented: $viewModel.isLoggedIn) {
-                    AppScreenView()
+                .fullScreenCover(item: $viewModel.currentUser) { user in
+                    AppScreenView(name: user.name, email: user.email)
                 }
             }
         }
