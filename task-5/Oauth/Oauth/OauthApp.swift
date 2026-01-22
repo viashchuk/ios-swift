@@ -11,7 +11,7 @@ import SwiftUI
 struct OauthApp: App {
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            ContentView()
         }
     }
 }

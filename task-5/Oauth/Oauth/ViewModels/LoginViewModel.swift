@@ -100,6 +100,12 @@ class LoginViewModel: NSObject, ObservableObject {
         }
     }
     
+    func logout() {
+        self.currentUser = nil
+        self.isLoggedIn = false
+        UserDefaults.standard.removeObject(forKey: "userToken")
+    }
+    
     private func saveToken(_ token: String) {
         UserDefaults.standard.set(token, forKey: "userToken")
     }

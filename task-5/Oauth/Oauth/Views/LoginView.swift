@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel()
+    @EnvironmentObject var viewModel: LoginViewModel
     
     var body: some View {
         NavigationView {
@@ -119,9 +119,6 @@ struct LoginView: View {
                 }
                 .padding(0)
                 .navigationBarHidden(true)
-                .fullScreenCover(item: $viewModel.currentUser) { user in
-                    AppScreenView(name: user.name, email: user.email)
-                }
             }
         }
     }

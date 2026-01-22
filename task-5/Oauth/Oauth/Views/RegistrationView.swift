@@ -10,6 +10,8 @@ import SwiftUI
 struct RegistrationView: View {
     @StateObject private var viewModel = RegistrationViewModel()
     
+    @EnvironmentObject var mainViewModel: LoginViewModel
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
@@ -43,7 +45,12 @@ struct RegistrationView: View {
                     
                     Button(action: {
                         Task {
-                            await viewModel.register()
+                            if let newUser = await viewModel.register() {
+                                withAnimation {
+                                    mainViewModel.currentUser = newUser
+                                    mainViewModel.isLoggedIn = true
+                                }
+                            }
                         }
                     }) {
                         Text("Sign Up")
@@ -56,10 +63,6 @@ struct RegistrationView: View {
                     .frame(height: 64)
                     
                     Spacer()
-                }
-                
-                .fullScreenCover(item: $viewModel.currentUser) { user in
-                    AppScreenView(name: user.name, email: user.email)
                 }
             }
             .background(.white)

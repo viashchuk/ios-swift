@@ -12,7 +12,7 @@ struct WelcomeView: View {
         case login = "Login"
         case register = "Register"
     }
-    
+        
     @State private var activeTab: Tab = .login
     
     var body: some View {

@@ -15,14 +15,8 @@ class RegistrationViewModel: ObservableObject {
     @Published var password = ""
     
     @Published var errorMessage: String?
-    @Published var isLoggedIn = false
-    @Published var currentUser: User? {
-        didSet {
-            isLoggedIn = (currentUser != nil)
-        }
-    }
     
-    func register() async {
+    func register() async -> User? {
         errorMessage = nil
         
         do {
@@ -33,9 +27,10 @@ class RegistrationViewModel: ObservableObject {
             )
             
             saveToken(response.token)
-            self.currentUser = response.user
+            return response.user
         } catch {
             handleError(error)
+            return nil
         }
     }
     
