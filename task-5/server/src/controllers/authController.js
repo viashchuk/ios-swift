@@ -1,7 +1,11 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import fetch from 'node-fetch'
 
 import userRepository from '../repositories/userRepository.js'
+
+const GOOGLE_TOKEN_INFO_URL = process.env.GOOGLE_TOKEN_INFO_URL
+const JWT_SECRET = process.env.JWT_SECRET
 
 const login = async (req, res) => {
   const { email, password } = req.body
@@ -60,7 +64,52 @@ const register = async (req, res) => {
   })
 }
 
+export const googleAut = async (req, res) => {
+  try {
+    const { email, name, token } = req.body; 
+
+    if (!token) {
+      return res.status(400).json({ message: "Token is required" });
+    }
+    
+
+    const googleVerifyRes = await fetch(`${GOOGLE_TOKEN_INFO_URL}?id_token=${token}`);  
+
+    const googleData = await googleVerifyRes.json();
+
+    if (googleData.error_description) {
+      return res.status(401).json({ message: "Invalid Google Token" });
+    }
+
+    let user = await userRepository.findByEmail(email);
+
+    if (!user) {
+      user = await userRepository.create({ 
+        name, 
+        email, 
+        googleToken: token
+      });
+    } else {
+      await userRepository.updateGoogleToken(user.id, token);
+    }
+
+    const internalToken = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: '1h' })
+
+    res.status(200).json({
+      token: internalToken,
+      user: {
+        email: user.email,
+        name: user.name
+      }
+    });
+
+  } catch (error) {
+    console.error("Auth Error:", error)
+  }
+}
+
 export default {
   login,
-  register
+  register,
+  googleAut
 }
