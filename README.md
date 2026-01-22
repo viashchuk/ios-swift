@@ -41,7 +41,7 @@ Kod: [Lista zadań](./task-2)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/d67dcce070ddf7e93a55a395fce36918dc729a3a)
 
-:x: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ios-swift/commit/8d41b1786d75aa3176f0dd5465b820e700638085)
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ios-swift/commit/8d41b1786d75aa3176f0dd5465b820e700638085)
 
 
 Kod: [Lista zakupów](./task-3)
@@ -65,15 +65,15 @@ Kod: [Sieć](./task-4)
 
 **Zadanie 5** Oauth
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/c1cbad0e359505e13eba5e47ee25436b77aaaa38)
 
-:x: 3.5 wymaganie 2 [Link do commita 2]()
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ios-swift/commit/74d4c372b78479992f2a8e5d1683948f520259bc)
 
-:x: 4.0 wymaganie 3 [Link do commita 3]()
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ios-swift/commit/fffa71dc65bbec4f830462d6a911de1a26a1abd8)
 
-:x: 4.5 wymaganie 4 [Link do commita 4]()
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/accac055cb0dfee76433c285c81331c3f7a0d936)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5.1](https://github.com/viashchuk/ios-swift/commit/accac055cb0dfee76433c285c81331c3f7a0d936), [Link do commita 5.2](https://github.com/viashchuk/ios-swift/commit/accac055cb0dfee76433c285c81331c3f7a0d936)
 
 
 Kod: [Oauth](./task-5)
