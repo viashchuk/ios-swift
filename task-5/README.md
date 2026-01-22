@@ -1,22 +1,14 @@
-# Task-2: Task List
+# Task-5: Oauth
 
 
 ## Demo
+https://github.com/user-attachments/assets/0b0735c0-8082-4b43-bbe4-49b91a3a3249
 
 
 ## Tasks
 
-- 3.0 Displays a list of predefined tasks (ArrayList): [Commit](https://github.com/viashchuk/ios-swift/commit/beeb1206a16509c7ad5e7697223777eabf7e4e00)
-- 3.5 Displaying an image on the task view: [Commit](https://github.com/viashchuk/ios-swift/commit/beeb1206a16509c7ad5e7697223777eabf7e4e00)
-- 4.0 Deleting (swipe) tasks: [Commit]()
-- 4.5 Changing task status (including structure modification): [Commit]()
-- 5.0 Displaying status on the task list: [Commit]()
-
-<!-- Oauth
-
-3.0 logowanie przez aplikację serwerową
-3.5 rejestracja przez aplikację serwerową
-4.0 logowanie via Google OAuth2
-4.5 logowanie via Facebook lub Github OAuth2
-5.0 zapisywanie danych logowania OAuth2 po stronie serwera
- -->
+- 3.0 Login via server application: [Commit](https://github.com/viashchuk/ios-swift/commit/c1cbad0e359505e13eba5e47ee25436b77aaaa38)
+- 3.5 Registration via server application: [Commit](https://github.com/viashchuk/ios-swift/commit/74d4c372b78479992f2a8e5d1683948f520259bc)
+- 4.0 Login via Google OAuth2: [Commit](https://github.com/viashchuk/ios-swift/commit/fffa71dc65bbec4f830462d6a911de1a26a1abd8)
+- 4.5 Login via Github OAuth2: [Commit](https://github.com/viashchuk/ios-swift/commit/accac055cb0dfee76433c285c81331c3f7a0d936)
+- 5.0 Server-side storage of OAuth2 login data: [Commit 1](https://github.com/viashchuk/ios-swift/commit/accac055cb0dfee76433c285c81331c3f7a0d936), [Commit 2](https://github.com/viashchuk/ios-swift/commit/accac055cb0dfee76433c285c81331c3f7a0d936)
