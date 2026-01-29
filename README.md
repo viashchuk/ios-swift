@@ -81,15 +81,15 @@ Kod: [Oauth](./task-5)
 
 **Zadanie 6** Płatności
 
-:x: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/ddafe57833362b07388974b1f4740e317f44a3e9)
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/ddafe57833362b07388974b1f4740e317f44a3e9)
 
-:white_check_mark: 3.5 wymaganie 2 [Link do commita 2]()
+:x: 3.5 wymaganie 2 [Link do commita 2]()
 
-:white_check_mark: 4.0 wymaganie 3 [Link do commita 3]()
+:x: 4.0 wymaganie 3 [Link do commita 3]()
 
-:white_check_mark: 4.5 wymaganie 4 [Link do commita 4]()
+:x: 4.5 wymaganie 4 [Link do commita 4]()
 
-:white_check_mark: 5.0 wymaganie 5 [Link do commita 5]()
+:x: 5.0 wymaganie 5 [Link do commita 5]()
 
 
 Kod: [Płatności](./task-6)
@@ -97,15 +97,15 @@ Kod: [Płatności](./task-6)
 
 **Zadanie 7** Testy
 
-:white_check_mark: 3.0 wymaganie 1 [Link do commita 1]()
+:x: 3.0 wymaganie 1 [Link do commita 1]()
 
-:white_check_mark: 3.5 wymaganie 2 [Link do commita 2]()
+:x: 3.5 wymaganie 2 [Link do commita 2]()
 
-:white_check_mark: 4.0 wymaganie 3 [Link do commita 3]()
+:x: 4.0 wymaganie 3 [Link do commita 3]()
 
-:white_check_mark: 4.5 wymaganie 4 [Link do commita 4]()
+:x: 4.5 wymaganie 4 [Link do commita 4]()
 
-:white_check_mark: 5.0 wymaganie 5 [Link do commita 5]()
+:x: 5.0 wymaganie 5 [Link do commita 5]()
 
 
 Kod: [Testy](./task-7)
