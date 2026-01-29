@@ -97,7 +97,7 @@ Kod: [Płatności](./task-6)
 
 **Zadanie 7** Testy
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/5dc7e6bc379d833cc228151a046e2b7fa42c4afa)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
