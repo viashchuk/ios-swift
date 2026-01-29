@@ -32,7 +32,7 @@ class LoginViewModel: NSObject, ObservableObject {
         
         let session = ASWebAuthenticationSession(url: authURL, callbackURLScheme: scheme) { callbackURL, error in
             if let error = error {
-                print("Ошибка: \(error.localizedDescription)")
+                print("Error: \(error.localizedDescription)")
                 return
             }
             
