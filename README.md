@@ -81,7 +81,7 @@ Kod: [Oauth](./task-5)
 
 **Zadanie 6** Płatności
 
-:white_check_mark: 3.0 wymaganie 1 [Link do commita 1]()
+:x: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/ddafe57833362b07388974b1f4740e317f44a3e9)
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2]()
 

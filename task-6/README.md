@@ -6,7 +6,7 @@
 
 ## Tasks
 
-- 3.0 Payment form and server-side application mocking: [Commit]()
+- 3.0 Payment form and server-side application mocking: [Commit](https://github.com/viashchuk/ios-swift/commit/ddafe57833362b07388974b1f4740e317f44a3e9)
 - 3.5 Local payment model: [Commit]()
 - 4.0 List of purchased (paid) products + model: [Commit]()
 - 4.5 Stripe implementation (deployment): [Commit]()
