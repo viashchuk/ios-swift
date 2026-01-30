@@ -85,7 +85,7 @@ Kod: [Oauth](./task-5)
 
 :white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ios-swift/commit/2be4d444a7fed739c1802566ac6330dace95d274)
 
-:x: 4.0 wymaganie 3 [Link do commita 3]()
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/viashchuk/ios-swift/commit/72366b1768c1089dbbb4b2da036df3496614cb4d)
 
 :x: 4.5 wymaganie 4 [Link do commita 4]()
 

@@ -8,7 +8,7 @@
 
 - 3.0 Payment form and server-side application mocking: [Commit](https://github.com/viashchuk/ios-swift/commit/ddafe57833362b07388974b1f4740e317f44a3e9)
 - 3.5 Local payment model: [Commit](https://github.com/viashchuk/ios-swift/commit/2be4d444a7fed739c1802566ac6330dace95d274)
-- 4.0 List of purchased (paid) products + model: [Commit]()
+- 4.0 List of purchased (paid) products + model: [Commit](https://github.com/viashchuk/ios-swift/commit/72366b1768c1089dbbb4b2da036df3496614cb4d)
 - 4.5 Stripe implementation (deployment): [Commit]()
 - 5.0 Card scanning feature: [Commit]()
 
