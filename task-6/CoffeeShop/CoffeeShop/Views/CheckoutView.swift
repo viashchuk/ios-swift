@@ -13,24 +13,24 @@ enum NavigationDestination: Hashable {
 }
 
 struct CheckoutView: View {
-    @StateObject private var appViewModel = CheckoutViewModel()
+    @StateObject private var viewModel = CheckoutViewModel()
     @State private var navigationPath = NavigationPath()
 
     var body: some View {
         NavigationStack(path: $navigationPath) {
             ScrollView {
                 VStack(spacing: 24) {
-                    if let order = appViewModel.order {
+                    if let order = viewModel.order {
                         if order.status == .initialized {
                             OrderSummary(order: order)
-                            PaymentForm(appViewModel: appViewModel)
+                            PaymentForm(viewModel: viewModel)
                         } else {
                             PurchaseComplete(onBackToHome: {
                                 navigationPath.append(NavigationDestination.ordersHistory)
                             })
                         }
                     } else {
-                        Text("You don't have initialized oreders")
+                        Text("You don't have initialized orders")
                             .foregroundColor(.gray)
                             .padding()
                     }
@@ -38,7 +38,7 @@ struct CheckoutView: View {
                 .padding()
             }
             .task {
-                await appViewModel.fetchInitializedOrder()
+                await viewModel.fetchInitializedOrder()
             }
             .navigationDestination(for: NavigationDestination.self) { destination in
                 switch destination {

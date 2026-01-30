@@ -11,3 +11,11 @@ struct PaymentResponse: Codable {
     let message: String?
     let error: String?
 }
+
+
+struct StripeIntentResponse: Codable {
+    let success: Bool
+    let clientSecret: String?
+    let stripePaymentId: String?
+    let publishableKey: String?
+}

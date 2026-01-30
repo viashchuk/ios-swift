@@ -4,10 +4,6 @@ import Order from './Order.js'
 import User from './User.js'
 
 const Payment = sequelize.define('Payment', {
-    id: {
-        type: DataTypes.STRING,
-        primaryKey: true,
-    },
     orderId: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -43,7 +39,11 @@ const Payment = sequelize.define('Payment', {
     },
     cardLast4: {
         type: DataTypes.STRING(4),
-        allowNull: false,
+        allowNull: true,
+    },
+    stripePaymentIntentId: {
+        type: DataTypes.STRING,
+        allowNull: true,
     }
 }, {
     tableName: 'payments'

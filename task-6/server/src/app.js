@@ -17,7 +17,7 @@ app.use('/', routes)
 
 const startServer = async () => {
   try {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: false })
 
     await seedAll()
 

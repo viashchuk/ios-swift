@@ -39,8 +39,33 @@ const findByOrderId = async (orderId) => {
   }
 }
 
+const findByStripePaymentIntentId = async (stripePaymentIntentId) => {
+  try {
+    return await Payment.findOne({
+      where: { stripePaymentIntentId: stripePaymentIntentId }
+    })
+  } catch (error) {
+      throw new Error('Payment not found')
+  }
+}
+
+const updateStatus = async (id, status) => {
+  try {
+    const payment = await findById(id)
+    if (!payment) {
+      throw new Error('Payment not found')
+    }
+    payment.status = status
+    return await payment.save()
+  } catch (error) {
+    throw error
+  }
+}
+
 export default {
   findById,
   create,
-  findByOrderId
+  findByOrderId,
+  findByStripePaymentIntentId,
+  updateStatus
 }

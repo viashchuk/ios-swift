@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import StripePaymentSheet
 
 struct PaymentForm: View {
-    @ObservedObject var appViewModel: CheckoutViewModel
+    @ObservedObject var viewModel: CheckoutViewModel
     
     @State private var cardNumber = ""
     @State private var cardHolderName = ""
@@ -59,7 +60,7 @@ struct PaymentForm: View {
                     }
                 }
                 
-                if let errorMessage = appViewModel.errorMessage {
+                if let errorMessage = viewModel.errorMessage {
                     Text("Error: \(errorMessage)")
                         .foregroundColor(.red)
                         .padding()
@@ -67,7 +68,7 @@ struct PaymentForm: View {
                 
                 Button {
                     Task {
-                        await appViewModel.processPayment(
+                        await viewModel.processPayment(
                             cardNumber: cardNumber,
                             expiryDate: expiryDate,
                             cvv: cvv,
@@ -76,7 +77,7 @@ struct PaymentForm: View {
                     }
                 } label: {
                     HStack {
-                        if appViewModel.isLoading {
+                        if viewModel.isLoading {
                             ProgressView().tint(.white)
                         } else {
                             Text("Complete Payment")
@@ -89,10 +90,17 @@ struct PaymentForm: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
                 }
+                
+                if let paymentSheet = viewModel.paymentSheet {
+                    StripeButton(viewModel: viewModel, paymentSheet: paymentSheet)
+                }
             }
             .padding()
             .background(Color(.systemGray6))
             .cornerRadius(12)
+        }
+        .task {
+            await viewModel.prepareStripePayment()
         }
         .padding(.horizontal)
 

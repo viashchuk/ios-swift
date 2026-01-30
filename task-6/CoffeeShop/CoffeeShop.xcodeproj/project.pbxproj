@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		984A899D2F2D3F5700BD8E14 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 984A899C2F2D3F5700BD8E14 /* StripePaymentSheet */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		984A86C52F2BDF1E00BD8E14 /* CoffeeShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984A899D2F2D3F5700BD8E14 /* StripePaymentSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				984A86C72F2BDF1E00BD8E14 /* CoffeeShop */,
+				984A899B2F2D3F5700BD8E14 /* Frameworks */,
 				984A86C62F2BDF1E00BD8E14 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +62,13 @@
 				984A86C52F2BDF1E00BD8E14 /* CoffeeShop.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		984A899B2F2D3F5700BD8E14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +91,7 @@
 			);
 			name = CoffeeShop;
 			packageProductDependencies = (
+				984A899C2F2D3F5700BD8E14 /* StripePaymentSheet */,
 			);
 			productName = CoffeeShop;
 			productReference = 984A86C52F2BDF1E00BD8E14 /* CoffeeShop.app */;
@@ -107,6 +121,9 @@
 			);
 			mainGroup = 984A86BC2F2BDF1E00BD8E14;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				984A899A2F2D3AF200BD8E14 /* XCRemoteSwiftPackageReference "stripe-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 984A86C62F2BDF1E00BD8E14 /* Products */;
 			projectDirPath = "";
@@ -347,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		984A899A2F2D3AF200BD8E14 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 25.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		984A899C2F2D3F5700BD8E14 /* StripePaymentSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 984A899A2F2D3AF200BD8E14 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripePaymentSheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 984A86BD2F2BDF1E00BD8E14 /* Project object */;
 }
