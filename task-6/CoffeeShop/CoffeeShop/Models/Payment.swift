@@ -21,10 +21,10 @@ struct Payment {
 
     func toDictionary() -> [String: Any] {
         return [
-            "cardLast4": cardLast4,
+            "cardNumber": cardNumber,
             "cardholderName": cardholderName,
-            "amount": amount,
-            "currency": "USD",
+            "expiryDate": expiryDate,
+            "cvv": cvv
         ]
     }
 }

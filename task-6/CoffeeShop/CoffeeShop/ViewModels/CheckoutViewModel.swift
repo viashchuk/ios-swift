@@ -1,15 +1,16 @@
 //
-//  AppScreenViewModel.swift
+//  CheckoutViewModel.swift
 //  CoffeeShop
 //
-//  Created by Victoria Iashchuk on 29/01/2026.
+//  Created by Victoria Iashchuk on 30/01/2026.
 //
+
 
 import Combine
 import Foundation
 
 @MainActor
-class AppScreenViewModel: ObservableObject {
+class CheckoutViewModel: ObservableObject {
     @Published var order: Order?
     @Published var isLoading = false
     @Published var errorMessage: String?
@@ -43,6 +44,7 @@ class AppScreenViewModel: ObservableObject {
         cvv: String,
         cardholderName: String
     ) async {
+        print("Start")
         guard let order = order else { return }
 
         isLoading = true
@@ -58,6 +60,7 @@ class AppScreenViewModel: ObservableObject {
         )
 
         let body: [String: Any] = paymentData.toDictionary()
+        print(body)
 
         do {
             let response: PaymentResponse = try await NetworkService.shared
@@ -70,14 +73,13 @@ class AppScreenViewModel: ObservableObject {
 
             if response.success {
                 self.order = response.order
-                print("Success: \(response.message ?? "")")
             } else {
                 self.errorMessage = response.error
             }
         } catch {
             handleError(error)
         }
-
+        
         isLoading = false
     }
 
