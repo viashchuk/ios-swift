@@ -49,7 +49,7 @@ Kod: [Lista zakupów](./task-3)
 
 **Zadanie 4** Sieć
 
-:x: 3.0 wymaganie 1 [Link do commita 1]()
+:xwhite_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/dbe2dc677b3ab05bf043e6dcddaf984658c8080a)
 
 :x: 3.5 wymaganie 2 [Link do commita 2]()
 
