@@ -9,6 +9,16 @@
 import Foundation
 import Combine
 
+struct LoginResponse: Codable {
+    let token: String
+    let message: String?
+    let user: User
+}
+
+struct LoginRequest: Codable {
+    let email: String
+    let password: String
+}
 
 @MainActor
 class LoginViewModel: NSObject, ObservableObject {

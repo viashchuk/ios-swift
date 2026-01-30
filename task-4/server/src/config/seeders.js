@@ -100,7 +100,7 @@ export const seedAll = async () => {
               description: prod.details,
               price: prod.price,
               categoryId: matchedDbCategory.id,
-              imageUrl: prod.imageName
+              imageUrl: `/images/${prod.imageName}.png`
             })
           })
         }

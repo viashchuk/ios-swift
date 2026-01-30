@@ -10,6 +10,20 @@ import Combine
 import Foundation
 import StripePaymentSheet
 
+struct PaymentResponse: Codable {
+    let success: Bool
+    let order: Order?
+    let message: String?
+    let error: String?
+}
+
+struct StripeIntentResponse: Codable {
+    let success: Bool
+    let clientSecret: String?
+    let stripePaymentId: String?
+    let publishableKey: String?
+}
+
 @MainActor
 class CheckoutViewModel: ObservableObject {
     @Published var order: Order?
