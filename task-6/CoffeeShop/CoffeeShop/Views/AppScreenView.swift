@@ -184,7 +184,6 @@ struct AppScreenView: View {
                         }
                     }
                     else if order.status == .completed {
-                            // ПОКАЗЫВАЕМ СООБЩЕНИЕ ОБ УСПЕХЕ
                             VStack(spacing: 12) {
                                 Image(systemName: "checkmark.circle.fill")
                                     .foregroundColor(.green)
