@@ -12,7 +12,7 @@ import StripePaymentSheet
 
 struct PaymentResponse: Codable {
     let success: Bool
-    let order: Order?
+    let order: OrderDTO?
     let message: String?
     let error: String?
 }
@@ -26,7 +26,7 @@ struct StripeIntentResponse: Codable {
 
 @MainActor
 class CheckoutViewModel: ObservableObject {
-    @Published var order: Order?
+    @Published var order: OrderDTO?
     @Published var isLoading = false
     @Published var errorMessage: String?
     

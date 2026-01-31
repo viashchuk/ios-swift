@@ -97,7 +97,7 @@ export const seedAll = async () => {
           sourceCategory.products.forEach(prod => {
             productsToCreate.push({
               name: prod.name,
-              description: prod.details,
+              details: prod.details,
               price: prod.price,
               categoryId: matchedDbCategory.id,
               imageUrl: `/images/${prod.imageName}.png`

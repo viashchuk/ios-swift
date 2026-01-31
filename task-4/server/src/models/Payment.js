@@ -5,7 +5,7 @@ import User from './User.js'
 
 const Payment = sequelize.define('Payment', {
     orderId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         unique: false,
         references: {
@@ -14,7 +14,7 @@ const Payment = sequelize.define('Payment', {
         }
     },
     userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: User,

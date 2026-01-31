@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OrderSummary: View {
-    let order: Order
+    let order: OrderEntity
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -17,7 +17,8 @@ struct OrderSummary: View {
                 .fontWeight(.semibold)
             
             VStack(alignment: .leading, spacing: 8) {
-                if let orderItems = order.items, !orderItems.isEmpty {
+                if let orderItems = order.orderItems as? Set<OrderItemEntity> {
+                    let orderItemsArray = orderItems.sorted { $0.id < $1.id }
                     Divider()
                         .padding(.vertical, 8)
                     
@@ -25,7 +26,7 @@ struct OrderSummary: View {
                         .font(.headline)
                         .padding(.top, 4)
                     
-                    ForEach(orderItems, id: \.id) { item in
+                    ForEach(orderItemsArray, id: \.id) { item in
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(item.product?.name ?? "Unknown Product")
@@ -46,7 +47,7 @@ struct OrderSummary: View {
                     Divider()
                         .padding(.vertical, 8)
                     
-                    let total = orderItems.reduce(0) { $0 + ($1.price * Double($1.quantity)) }
+                    let total = orderItemsArray.reduce(0) { $0 + ($1.price * Double($1.quantity)) }
                     HStack {
                         Text("Total:")
                             .font(.headline)
@@ -64,3 +65,4 @@ struct OrderSummary: View {
         }.padding(.horizontal)
     }
 }
+

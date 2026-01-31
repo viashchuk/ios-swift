@@ -12,7 +12,7 @@ import Combine
 struct LoginResponse: Codable {
     let token: String
     let message: String?
-    let user: User
+    let user: UserDTO
 }
 
 struct LoginRequest: Codable {
@@ -27,7 +27,7 @@ class LoginViewModel: NSObject, ObservableObject {
     
     @Published var errorMessage: String?
     @Published var isLoggedIn = false
-    @Published var currentUser: User? {
+    @Published var currentUser: UserDTO? {
         didSet {
             isLoggedIn = (currentUser != nil)
         }

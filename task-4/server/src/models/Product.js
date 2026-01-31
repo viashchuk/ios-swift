@@ -7,7 +7,7 @@ const Product = sequelize.define('Product', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    description: {
+    details: {
         type: DataTypes.TEXT,
     },
     price: {
@@ -15,7 +15,7 @@ const Product = sequelize.define('Product', {
         allowNull: false,
     },
     categoryId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: Category,

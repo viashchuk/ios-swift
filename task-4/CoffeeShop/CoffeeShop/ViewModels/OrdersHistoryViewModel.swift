@@ -8,9 +8,14 @@
 import Combine
 import Foundation
 
+struct OrderResponse: Codable {
+    let success: Bool
+    let orders: [OrderDTO]
+}
+
 @MainActor
 class OrdersHistoryViewModel: ObservableObject {
-    @Published var purchasedOrders: [Order] = []
+    @Published var purchasedOrders: [OrderDTO] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
 

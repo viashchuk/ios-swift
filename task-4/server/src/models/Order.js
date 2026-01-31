@@ -4,7 +4,7 @@ import User from './User.js'
 
 const Order = sequelize.define('Order', {
     userId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: User,
