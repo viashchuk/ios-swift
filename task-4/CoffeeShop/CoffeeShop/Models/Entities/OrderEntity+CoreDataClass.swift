@@ -1,0 +1,17 @@
+//
+//  OrderEntity+CoreDataClass.swift
+//  CoffeeShop
+//
+//  Created by Victoria Iashchuk on 31/01/2026.
+//
+//
+
+public import Foundation
+public import CoreData
+
+public typealias OrderEntityCoreDataClassSet = NSSet
+
+@objc(OrderEntity)
+public class OrderEntity: NSManagedObject {
+
+}

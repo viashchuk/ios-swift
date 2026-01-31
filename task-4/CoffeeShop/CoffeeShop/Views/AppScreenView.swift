@@ -12,8 +12,10 @@ struct AppScreenView: View {
     let name: String
     let email: String
 
-    @EnvironmentObject var viewModel: LoginViewModel
-
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
+    @StateObject private var viewModel = AppViewModel()
+    
     var body: some View {
         TabView {
             NavigationStack {
@@ -32,6 +34,9 @@ struct AppScreenView: View {
 //            .badge(cartItems.reduce(0) { $0 + Int($1.quantity) })
         }
         .tint(Constants.secondary)
+        .task {
+            await viewModel.startSync()
+        }
         
 //        VStack(spacing: 24) {
 //            
@@ -40,7 +45,7 @@ struct AppScreenView: View {
 //            Spacer()
 //
 //            Button(role: .destructive) {
-//                viewModel.logout()
+//                loginViewModel.logout()
 //            } label: {
 //                Text("Log Out")
 //                    .frame(maxWidth: .infinity)
