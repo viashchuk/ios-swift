@@ -128,9 +128,8 @@ class DataSyncService {
 
                 do {
                     if let foundProduct = try context.fetch(request).first {
-                        item.product = foundProduct
-                    } else {
-                        print("ERROR: CAN'T FIND PRODUCT WITH ID \(productId)")
+                        let productInContext = context.object(with: foundProduct.objectID) as! ProductEntity
+                        item.product = productInContext
                     }
                 } catch {
                     print("ERROR: \(error)")

@@ -25,7 +25,7 @@ struct ProductDTO: Codable {
     let price: Double
     let categoryId: Int
     let imageUrl: String?
-    let category: CategoryDTO
+    let category: CategoryDTO?
     let createdAt: Date?
     let updatedAt: Date?
 }
