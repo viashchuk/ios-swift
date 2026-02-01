@@ -33,6 +33,24 @@ class AppViewModel: ObservableObject {
 
     private let context = PersistenceController.shared.container.viewContext
 
+    var cartItemsCount: Int {
+        guard
+            let items = currentOrder?.orderItems?.allObjects
+                as? [OrderItemEntity]
+        else {
+            return 0
+        }
+        return items.reduce(0) { $0 + Int($1.quantity) }
+    }
+    
+    init() {
+        NotificationCenter.default.addObserver(forName: .NSManagedObjectContextDidSave, object: nil, queue: .main) { [weak self] _ in
+            print("REFRESH UI")
+            self?.setupCurrentOrder()
+        }
+    }
+
+    @MainActor
     func startSync() async {
 
         print("START SYNC")
@@ -64,13 +82,15 @@ class AppViewModel: ObservableObject {
             print("SEND TO CORE")
 
             DataSyncService.shared.syncEverything(from: fullResponse)
-
-            //            await setupCurrentOrder()
         } catch {
             print("ERROR: \(error.localizedDescription)")
         }
 
         await MainActor.run { isSyncing = false }
+    }
+    
+    func refreshCart() {
+        objectWillChange.send()
     }
 
     private func setupCurrentOrder() {
@@ -78,12 +98,16 @@ class AppViewModel: ObservableObject {
 
         do {
             let allOrders = try context.fetch(request)
-
             self.currentOrder = DataSyncService.shared
                 .fetchOrCreateCurrentOrder(from: allOrders, in: context)
+            
             print("CURRENT ORDER: ID \(self.currentOrder?.id ?? 0)")
+            print("CURRENT ORDER: STATUS \(self.currentOrder?.status ?? "")")
+            print("CURRENT ORDER: totalAmount \(self.currentOrder?.totalAmount ?? 0)")
+
         } catch {
             print("Failed to fetch orders: \(error)")
         }
     }
 }
+

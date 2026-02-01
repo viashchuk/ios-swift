@@ -78,10 +78,20 @@ class DataSyncService {
     ) -> [Int: CategoryEntity] {
         var dict = [Int: CategoryEntity]()
         for dto in dtos {
-            let entity = CategoryEntity(context: context)
-            entity.id = Int64(dto.id)
-            entity.name = dto.name
-            dict[dto.id] = entity
+
+            let categoryRequest = CategoryEntity.fetchRequest()
+            categoryRequest.predicate = NSPredicate(
+                format: "id == %lld",
+                Int64(dto.id)
+            )
+
+            let category =
+                (try? context.fetch(categoryRequest).first)
+                ?? CategoryEntity(context: context)
+
+            category.id = Int64(dto.id)
+            category.name = dto.name
+            dict[dto.id] = category
         }
         return dict
     }
@@ -92,13 +102,23 @@ class DataSyncService {
         in context: NSManagedObjectContext
     ) {
         for dto in dtos {
-            let entity = ProductEntity(context: context)
-            entity.id = Int64(dto.id)
-            entity.name = dto.name
-            entity.price = dto.price
-            entity.details = dto.details
-            entity.imageUrl = dto.imageUrl
-            entity.category = categories[dto.categoryId]
+
+            let productRequest = ProductEntity.fetchRequest()
+            productRequest.predicate = NSPredicate(
+                format: "id == %lld",
+                Int64(dto.id)
+            )
+
+            let product =
+                (try? context.fetch(productRequest).first)
+                ?? ProductEntity(context: context)
+
+            product.id = Int64(dto.id)
+            product.name = dto.name
+            product.price = dto.price
+            product.details = dto.details
+            product.imageUrl = dto.imageUrl
+            product.category = categories[dto.categoryId]
         }
     }
 
@@ -107,7 +127,16 @@ class DataSyncService {
         in context: NSManagedObjectContext
     ) {
         for dto in dtos {
-            let order = OrderEntity(context: context)
+            let orderRequest = OrderEntity.fetchRequest()
+            orderRequest.predicate = NSPredicate(
+                format: "id == %lld",
+                Int64(dto.id)
+            )
+
+            let order =
+                (try? context.fetch(orderRequest).first)
+                ?? OrderEntity(context: context)
+
             order.id = Int64(dto.id)
             order.purchasedAt = dto.updatedAt
             order.totalAmount = dto.totalAmount
@@ -115,24 +144,32 @@ class DataSyncService {
             order.status = dto.status.rawValue
 
             for itemDto in dto.items ?? [] {
-                let item = OrderItemEntity(context: context)
+                let itemRequest = OrderItemEntity.fetchRequest()
+                itemRequest.predicate = NSPredicate(
+                    format: "id == %lld",
+                    Int64(itemDto.id)
+                )
+
+                let item =
+                    (try? context.fetch(itemRequest).first)
+                    ?? OrderItemEntity(context: context)
                 item.id = Int64(itemDto.id)
                 item.quantity = Int16(itemDto.quantity)
                 item.price = itemDto.price
                 item.order = order
 
-                let request = ProductEntity.fetchRequest()
+                let productRequest = ProductEntity.fetchRequest()
                 let productId = Int64(itemDto.productId)
-                request.predicate = NSPredicate(format: "id == %lld", productId)
-                request.fetchLimit = 1
+                productRequest.predicate = NSPredicate(
+                    format: "id == %lld",
+                    productId
+                )
+                productRequest.fetchLimit = 1
 
-                do {
-                    if let foundProduct = try context.fetch(request).first {
-                        let productInContext = context.object(with: foundProduct.objectID) as! ProductEntity
-                        item.product = productInContext
-                    }
-                } catch {
-                    print("ERROR: \(error)")
+                if let foundProduct = try? context.fetch(productRequest).first {
+                    item.product =
+                        context.object(with: foundProduct.objectID)
+                        as? ProductEntity
                 }
             }
         }

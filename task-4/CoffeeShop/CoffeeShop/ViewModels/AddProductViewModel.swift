@@ -39,7 +39,7 @@ class AddProductViewModel: ObservableObject {
     }
 
     func saveProduct() async -> Bool {
-        print("START SAVE REQUSET")
+        print("START SAVE REQUEST")
         
         guard isFormValid else { return false }
         

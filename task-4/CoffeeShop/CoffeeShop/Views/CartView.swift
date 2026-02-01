@@ -5,67 +5,70 @@
 //  Created by Victoria Iashchuk on 30/01/2026.
 //
 
-
-import SwiftUI
 import CoreData
-//
-//struct CartView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
-//    
-//    @FetchRequest(
-//        sortDescriptors: [],
-//        animation: .default)
-//    private var cartItems: FetchedResults<CartItem>
-//    
-//    var body: some View {
-//        VStack(alignment: .leading, spacing: 20) {
-//            HStack {
-//                Spacer()
-//                Text("My Cart")
-//                    .font(.system(size: 24))
-//                    .fontWeight(.bold)
-//                    .foregroundColor(Constants.secondary)
-//                    .multilineTextAlignment(.center)
-//                Spacer()
-//            }
-//            .padding(.vertical, 20)
-//            List {
-//                ForEach(cartItems) { item in
-//                    CartRow(item: item)
-//                        .listRowSeparator(.hidden)
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//            .listStyle(.plain)
-//            .scrollContentBackground(.hidden)
-//            
-//            if !cartItems.isEmpty {
-//                OrderSummary(cartItems: cartItems)
-//                    .id(cartItems.map { "\($0.objectID)-\($0.quantity)" }.joined())
-//            }
-//        }
-//    }
-//    
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            offsets.map { cartItems[$0] }.forEach(viewContext.delete)
-//            try? viewContext.save()
-//        }
-//    }
-//}
-//
-//#Preview {
-//    let context = PersistenceController.shared.container.viewContext
-//    let previewProduct = Product(context: context)
-//    previewProduct.name = "Caramel Frappuccino"
-//    previewProduct.price = 30.00
-//    previewProduct.imageName = "caramel_brulee_frappuccino"
-//    
-//    let previewCartItem = CartItem(context: context)
-//    previewCartItem.product = previewProduct
-//    previewCartItem.quantity = 2
-//    
-//    return NavigationStack {
-//        CartView().environment(\.managedObjectContext, context)
-//    }
-//}
+import SwiftUI
+import Combine
+
+struct CartView: View {
+    @EnvironmentObject var appViewModel: AppViewModel
+    @Environment(\.managedObjectContext) private var viewContext
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            HStack {
+                Spacer()
+                Text("My Cart")
+                    .font(.system(size: 24))
+                    .fontWeight(.bold)
+                    .foregroundColor(Constants.secondary)
+                    .multilineTextAlignment(.center)
+                Spacer()
+            }
+            .padding(.vertical, 20)
+            if let currentOrder = appViewModel.currentOrder,
+                let items = currentOrder.orderItems?.allObjects
+                    as? [OrderItemEntity],
+                !items.isEmpty
+            {
+
+                List {
+                    ForEach(
+                        items.sorted(by: {
+                            ($0.product?.name ?? "") < ($1.product?.name ?? "")
+                        })
+                    ) { item in
+                        CartRow(item: item)
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(
+                                EdgeInsets(
+                                    top: 8,
+                                    leading: 16,
+                                    bottom: 8,
+                                    trailing: 16
+                                )
+                            )
+                    }
+                    .onDelete { offsets in
+                        deleteItems(offsets: offsets, from: items)
+                    }
+                }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+
+                CartOrderSummary()
+                                .padding()
+            } else {
+                Text("You don't have any products in your cart")
+            }
+        }
+    }
+
+    private func deleteItems(offsets: IndexSet, from items: [OrderItemEntity]) {
+            let sortedItems = items.sorted(by: { ($0.product?.name ?? "") < ($1.product?.name ?? "") })
+            withAnimation {
+                offsets.map { sortedItems[$0] }.forEach(viewContext.delete)
+                try? viewContext.save()
+                appViewModel.objectWillChange.send()
+            }
+        }
+}

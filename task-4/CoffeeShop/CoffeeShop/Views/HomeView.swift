@@ -85,9 +85,9 @@ struct HomeView: View {
             AddProductView()
         }
         .background(Color.gray.opacity(0.05))
-        //        .navigationDestination(for: ProductEntity.self) { product in
-        //            ProductDetailView(product: product)
-        //        }
+        .navigationDestination(for: ProductEntity.self) { product in
+            ProductDetailView(product: product)
+        }
     }
 
     private var filteredProducts: [ProductEntity] {
