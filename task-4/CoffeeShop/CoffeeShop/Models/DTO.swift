@@ -10,7 +10,7 @@ import Foundation
 struct SyncResponse: Codable {
     let categories: [CategoryDTO]
     let products: [ProductDTO]
-//    let orders: [OrderDTO]
+    let orders: [OrderDTO]
 }
 
 struct CategoryDTO: Codable {
@@ -37,7 +37,7 @@ struct OrderDTO: Codable {
     let paymentMethod: PaymentMethod
     let createdAt: Date?
     let updatedAt: Date?
-    let items: [OrderItemDTO]
+    let items: [OrderItemDTO]?
     var totalAmount: Double
 }
 
