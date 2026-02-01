@@ -1,4 +1,4 @@
-import { Order, OrderItem, Product } from '../models/index.js'
+import { Order, OrderItem, Product, Category } from '../models/index.js'
 import sequelize from '../config/database.js'
 
 const create = async (orderData, items) => {
@@ -33,7 +33,13 @@ const findById = async (id) => {
                     include: [
                         {
                             model: Product,
-                            as: 'product'
+                            as: 'product',
+                            include: [
+                                {
+                                    model: Category,
+                                    as: 'category'
+                                }
+                            ]
                         }
                     ]
                 }
@@ -55,7 +61,13 @@ const findByUserId = async (userId) => {
                     include: [
                         {
                             model: Product,
-                            as: 'product'
+                            as: 'product',
+                            include: [
+                                {
+                                    model: Category,
+                                    as: 'category'
+                                }
+                            ]
                         }
                     ]
                 }
@@ -80,7 +92,13 @@ const findByUserIdAndStatus = async (userId, status) => {
                 include: [
                     {
                         model: Product,
-                        as: 'product'
+                        as: 'product',
+                        include: [
+                            {
+                                model: Category,
+                                as: 'category'
+                            }
+                        ]
                     }
                 ]
             }

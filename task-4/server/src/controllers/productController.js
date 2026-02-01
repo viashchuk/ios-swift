@@ -55,8 +55,41 @@ const getProductsByCategoryId = async (req, res) => {
     }
 }
 
+const createProduct = async (req, res) => {
+    try {
+        const { name, details, price, categoryId } = req.body
+
+        if (!name || !price || !categoryId) {
+        console.log("ERRRR")
+            return res.status(400).json({
+                success: false,
+                error: 'Name, price, and categoryId are required'
+            })
+        }
+
+        const newProduct = await ProductRepository.create({
+            name,
+            details,
+            price,
+            categoryId
+        })
+
+        res.status(201).json({
+            success: true,
+            product: newProduct
+        })
+    } catch (error) {
+        console.error('Create product error:', error)
+        res.status(500).json({
+            success: false,
+            error: 'Failed to create product'
+        })
+    }
+}
+
 export default {
     getAllProducts,
     getProductById,
-    getProductsByCategoryId
+    getProductsByCategoryId,
+    createProduct
 }

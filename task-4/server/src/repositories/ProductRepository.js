@@ -37,8 +37,13 @@ const findByCategoryId = async (categoryId) => {
     })
 }
 
+const create = async (productData) => {
+    return await Product.create(productData)
+}
+
 export default {
     findAll,
     findById,
-    findByCategoryId
+    findByCategoryId,
+    create
 }
