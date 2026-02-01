@@ -57,7 +57,7 @@ Kod: [Lista zakupów](./task-3)
 
 :white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/fd3e5c4a7bd290256e3eb511f7b1e1581ba9fe78)
 
-:x: 5.0 wymaganie 5 [Link do commita 5]()
+:white_check_mark: 5.0 wymaganie 5 [Link do commita 5](https://github.com/viashchuk/ios-swift/commit/06378b242ab606e9a41fcc573ce1f0ffba49d9b7)
 
 
 Kod: [Sieć](./task-4)
