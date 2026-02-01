@@ -49,13 +49,13 @@ Kod: [Lista zakupów](./task-3)
 
 **Zadanie 4** Sieć
 
-:xwhite_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/dbe2dc677b3ab05bf043e6dcddaf984658c8080a)
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/viashchuk/ios-swift/commit/dbe2dc677b3ab05bf043e6dcddaf984658c8080a)
 
-:xwhite_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ios-swift/commit/fd3e5c4a7bd290256e3eb511f7b1e1581ba9fe78)
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/viashchuk/ios-swift/commit/fd3e5c4a7bd290256e3eb511f7b1e1581ba9fe78)
 
 :x: 4.0 wymaganie 3 [Link do commita 3]()
 
-:xwhite_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/fd3e5c4a7bd290256e3eb511f7b1e1581ba9fe78)
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/viashchuk/ios-swift/commit/fd3e5c4a7bd290256e3eb511f7b1e1581ba9fe78)
 
 :x: 5.0 wymaganie 5 [Link do commita 5]()
 
