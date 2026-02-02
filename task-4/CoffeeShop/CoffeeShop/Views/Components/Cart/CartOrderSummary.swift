@@ -9,12 +9,17 @@ import SwiftUI
 
 struct CartOrderSummary: View {
     @EnvironmentObject var viewModel: AppViewModel
+    var onPlaceOrder: () -> Void
 
     var body: some View {
-        let items = viewModel.currentOrder?.orderItems?.allObjects as? [OrderItemEntity] ?? []
-        let totalPrice = items.reduce(0) { $0 + (Double($1.quantity) * $1.price) }
+        let items =
+            viewModel.currentOrder?.orderItems?.allObjects as? [OrderItemEntity]
+            ?? []
+        let totalPrice = items.reduce(0) {
+            $0 + (Double($1.quantity) * $1.price)
+        }
         let totalQuantity = items.reduce(0) { $0 + Int($1.quantity) }
-        
+
         VStack(spacing: 15) {
             HStack {
                 Text("Total Items")
@@ -36,7 +41,9 @@ struct CartOrderSummary: View {
                     .contentTransition(.numericText())
             }
 
-            Button(action: {}) {
+            Button(action: {
+                onPlaceOrder()
+            }) {
                 Text("Place Order")
                     .font(.headline)
                     .foregroundColor(.white)

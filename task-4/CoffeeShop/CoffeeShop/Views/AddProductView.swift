@@ -17,6 +17,7 @@ struct AddProductView: View {
     @FetchRequest(sortDescriptors: [
         NSSortDescriptor(keyPath: \CategoryEntity.name, ascending: true)
     ])
+    
     var categories: FetchedResults<CategoryEntity>
 
     @State private var selectedItem: PhotosPickerItem?

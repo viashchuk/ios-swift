@@ -14,7 +14,7 @@ struct AppScreenView: View {
 
     @EnvironmentObject var loginViewModel: LoginViewModel
 
-    @StateObject private var viewModel = AppViewModel()
+    @StateObject private var appViewModel = AppViewModel()
 
     var body: some View {
         TabView {
@@ -38,11 +38,12 @@ struct AppScreenView: View {
             .tabItem {
                 Label("Cart", systemImage: "cart")
             }
-            //            .badge(cartItems.reduce(0) { $0 + Int($1.quantity) })
+            .badge(appViewModel.cartItemsCount)
         }
         .tint(Constants.secondary)
+        .environmentObject(appViewModel)
         .task {
-            await viewModel.startSync()
+            await appViewModel.startSync()
         }
 
         //        VStack(spacing: 24) {

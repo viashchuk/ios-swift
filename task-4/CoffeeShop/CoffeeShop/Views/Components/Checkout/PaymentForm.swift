@@ -10,6 +10,7 @@ import StripePaymentSheet
 
 struct PaymentForm: View {
     @ObservedObject var viewModel: CheckoutViewModel
+    @EnvironmentObject var appViewModel: AppViewModel
     
     @State private var cardNumber = ""
     @State private var cardHolderName = ""
@@ -74,6 +75,7 @@ struct PaymentForm: View {
                             cvv: cvv,
                             cardholderName: cardHolderName
                         )
+                        appViewModel.refreshCart()
                     }
                 } label: {
                     HStack {

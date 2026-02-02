@@ -12,6 +12,8 @@ import Combine
 struct CartView: View {
     @EnvironmentObject var appViewModel: AppViewModel
     @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var showingCheckout = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -55,11 +57,14 @@ struct CartView: View {
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
 
-                CartOrderSummary()
-                                .padding()
+                CartOrderSummary() {
+                    showingCheckout = true
+                }
             } else {
                 Text("You don't have any products in your cart")
             }
+        }.sheet(isPresented: $showingCheckout) {
+            CheckoutView()
         }
     }
 
