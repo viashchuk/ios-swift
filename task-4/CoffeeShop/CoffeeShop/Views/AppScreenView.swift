@@ -14,7 +14,7 @@ struct AppScreenView: View {
 
     @EnvironmentObject var loginViewModel: LoginViewModel
     
-    @StateObject private var viewModel = AppViewModel()
+    @StateObject private var appViewModel = AppViewModel()
     
     var body: some View {
         TabView {
@@ -43,7 +43,7 @@ struct AppScreenView: View {
         }
         .tint(Constants.secondary)
         .task {
-            await viewModel.startSync()
+            await appViewModel.startSync()
         }
         
 //        VStack(spacing: 24) {
