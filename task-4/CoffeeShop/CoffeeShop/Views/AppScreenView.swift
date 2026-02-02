@@ -13,9 +13,9 @@ struct AppScreenView: View {
     let email: String
 
     @EnvironmentObject var loginViewModel: LoginViewModel
-
-    @StateObject private var appViewModel = AppViewModel()
-
+    
+    @StateObject private var viewModel = AppViewModel()
+    
     var body: some View {
         TabView {
             NavigationStack {
@@ -24,13 +24,14 @@ struct AppScreenView: View {
             .tabItem {
                 Label("Shop", systemImage: "house")
             }
-
-            NavigationStack {
-                OrdersHistoryView()
-            }
-            .tabItem {
+            
+                NavigationStack {
+                    OrdersHistoryView()
+                }
+                .tabItem {
                 Label("My Orders", systemImage: "list.bullet.rectangle")
-            }
+                }
+            
 
             NavigationStack {
                 CartView()
@@ -41,27 +42,26 @@ struct AppScreenView: View {
             .badge(appViewModel.cartItemsCount)
         }
         .tint(Constants.secondary)
-        .environmentObject(appViewModel)
         .task {
-            await appViewModel.startSync()
+            await viewModel.startSync()
         }
-
-        //        VStack(spacing: 24) {
-        //
-        //            CheckoutView()
-        //
-        //            Spacer()
-        //
-        //            Button(role: .destructive) {
-        //                loginViewModel.logout()
-        //            } label: {
-        //                Text("Log Out")
-        //                    .frame(maxWidth: .infinity)
-        //                    .padding()
-        //                    .background(Color.red.opacity(0.1))
-        //                    .cornerRadius(12)
-        //            }
-        //            .padding(.horizontal, 24)
-        //            .padding(.bottom, 40)
+        
+//        VStack(spacing: 24) {
+//            
+//            CheckoutView()
+//
+//            Spacer()
+//
+//            Button(role: .destructive) {
+//                loginViewModel.logout()
+//            } label: {
+//                Text("Log Out")
+//                    .frame(maxWidth: .infinity)
+//                    .padding()
+//                    .background(Color.red.opacity(0.1))
+//                    .cornerRadius(12)
+//            }
+//            .padding(.horizontal, 24)
+//            .padding(.bottom, 40)
     }
 }
